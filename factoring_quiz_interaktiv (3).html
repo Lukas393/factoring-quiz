@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Factoring – Interaktives Mini-Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .answers button {
+            display: block;
+            margin: 4px 0;
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+        }
+        .answers button.correct {
+            background: #c8f7c5;
+            border-color: #4caf50;
+        }
+        .answers button.wrong {
+            background: #f9c0c0;
+            border-color: #f44336;
+        }
+        .feedback {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Factoring – Mini-Quiz</h1>
+    <p>Klicke auf eine Antwort, um zu sehen, ob sie richtig ist.</p>
+
+    <div class="question" data-correct="b">
+        <p><strong>1. Was ist der Hauptzweck des Factorings?</strong></p>
+        <div class="answers">
+            <button data-option="a">a) Die Forderungen eines Unternehmens zu erhöhen</button>
+            <button data-option="b">b) Forderungen vor Fälligkeit in Liquidität umzuwandeln</button>
+            <button data-option="c">c) Dem Käufer Rabatte zu gewähren</button>
+            <button data-option="d">d) Neue Kunden zu gewinnen</button>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question" data-correct="c">
+        <p><strong>2. Welches Merkmal trifft nur auf echtes Factoring zu?</strong></p>
+        <div class="answers">
+            <button data-option="a">a) Der Käufer wird nicht informiert</button>
+            <button data-option="b">b) Der Factor übernimmt die Debitorenbuchhaltung</button>
+            <button data-option="c">c) Der Factor übernimmt das Kreditrisiko</button>
+            <button data-option="d">d) Die Forderungen bleiben beim Unternehmen</button>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question" data-correct="c">
+        <p><strong>3. Wie nennt man Factoring, wenn der Käufer nicht informiert wird?</strong></p>
+        <div class="answers">
+            <button data-option="a">a) Offenes Factoring</button>
+            <button data-option="b">b) Direktes Factoring</button>
+            <button data-option="c">c) Stilles Factoring</button>
+            <button data-option="d">d) Rückkauf-Factoring</button>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question" data-correct="b">
+        <p><strong>4. Welche Funktion umfasst Mahnwesen und Inkasso?</strong></p>
+        <div class="answers">
+            <button data-option="a">a) Kreditgewährungsfunktion</button>
+            <button data-option="b">b) Dienstleistungsfunktion</button>
+            <button data-option="c">c) Delkrederefunktion</button>
+            <button data-option="d">d) Sicherungsfunktion</button>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question" data-correct="c">
+        <p><strong>5. Welcher Punkt ist ein Nachteil des Factorings?</strong></p>
+        <div class="answers">
+            <button data-option="a">a) Sofortige Liquidität</button>
+            <button data-option="b">b) Absicherung gegen Zahlungsausfall</button>
+            <button data-option="c">c) Hohe Gebühren und Zinsen</button>
+            <button data-option="d">d) Professionelles Forderungsmanagement</button>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.question').forEach(function(q){
+            const correct = q.getAttribute('data-correct');
+            const buttons = q.querySelectorAll('button');
+            const feedback = q.querySelector('.feedback');
+
+            buttons.forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    buttons.forEach(b => b.classList.remove('correct', 'wrong'));
+
+                    const chosen = btn.getAttribute('data-option');
+                    if (chosen === correct) {
+                        btn.classList.add('correct');
+                        feedback.textContent = "✅ Richtig!";
+                    } else {
+                        btn.classList.add('wrong');
+                        feedback.textContent = "❌ Falsch. Richtige Antwort: " + correct + ")";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
